@@ -9,7 +9,7 @@ from urllib.request import Request, urlopen
 
 def defineAccessPoint():
     """Define the access point to the Mozilla Server.
-    
+
     :returns protocol: which protocol :type str
 
     :returns hostDomain: host domain name :type str
@@ -28,8 +28,8 @@ def defineAccessPoint():
 
 def fetchWords():
     """Retrieve the word library.
-    
-    return: 
+
+    return pwds: common passwords :type list
     """
     p, hdn, e, h = defineAccessPoint()
     destination = "{}://{}.ly/".format(p, hdn)
@@ -37,4 +37,6 @@ def fetchWords():
     # Generate the request to the bit.ly server
     req = Request(url = destination + e, data = None, headers = h)
 
+    # Send the URL request, read the string, decode it to utf-8, and split the string by newline
+    # separators. Do not print full as it is roughly ~500k words.
     return urlopen(req).read().decode("utf-8").split("\n")
