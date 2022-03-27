@@ -50,7 +50,8 @@ def bruteForce(pword, method=0):
             t = datetime.now() - t
         else:
             if (datetime.now() - q).total_seconds() >= 10:
-                print("{:0f} seconds, {} guesses so far ...".format((datetime.now() - t).total_seconds(), k))
+                print("{:0f} seconds, {} guesses so far ...".format(
+                    (datetime.now() - t).total_seconds(), k))
                 q = datetime.now()
 
     return "Cheap brute force cracked password {} in {} using {} guesses!".format(pword, t, k)
@@ -68,10 +69,10 @@ def dictionAttack(pword):
     for guess in treasure:
         # For some reason Bilal strips out whitespace.
         if guess.strip(" ") == pword:
-            t = datetime.now() - t
-            return "Dictionary attack cracked password {} in {}!".format(pword, t)
-    return "Dictionary of {} did not contain password {}! Only takes {} for all tries!".format(
-            len(treasure), pword, datetime.now() - t)
+            t = (datetime.now() - t).total_seconds()
+            return "Dictionary attack cracked password {} in {} seconds!".format(pword, t)
+    return ("Dictionary did not contain password {}!".format(pword) +
+            "\nOnly takes {} seconds for all tries!".format((datetime.now() - t).total_seconds()
 
 
 def attack(password):

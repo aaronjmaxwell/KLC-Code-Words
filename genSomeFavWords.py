@@ -11,6 +11,7 @@ Bonus: Have them shuffle the order.
 @organization: Canada Learning Code
 """
 __author__ = "AJMax"
+__version__ = "1.0.0"
 import random
 
 print("Your new password is:")
