@@ -4,7 +4,7 @@
 @organization: Canada Learning Code
 """
 __author__ = "AJMax"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 import random
 from datetime import datetime
 from .getCommonWords import fetchWords
@@ -54,7 +54,8 @@ def bruteForce(pword, method=0):
                     (datetime.now() - t).total_seconds(), k))
                 q = datetime.now()
 
-    return "Cheap brute force cracked password {} in {} using {} guesses!".format(pword, t, k)
+    return ("Cheap brute force cracked password {} in {} seconds".format(pword, t.total_seconds())
+            + " using {} guesses!".format(k))
 
 
 def dictionAttack(pword):
@@ -72,7 +73,7 @@ def dictionAttack(pword):
             t = (datetime.now() - t).total_seconds()
             return "Dictionary attack cracked password {} in {} seconds!".format(pword, t)
     return ("Dictionary did not contain password {}!".format(pword) +
-            "\nOnly takes {} seconds for all tries!".format((datetime.now() - t).total_seconds()
+            " Only takes {} seconds for all tries!".format((datetime.now() - t).total_seconds()))
 
 
 def attack(password):
