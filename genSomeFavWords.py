@@ -5,7 +5,7 @@ Step 2: Have them print something!
 Step 3: Have them generate lists of favourite words and characters.
 Step 4: Have them pick a new random word, character, number. Import random!
 Step 5: Have them join the three together and print!
-Bonus: Have them
+Bonus: Have them shuffle the order.
 
 @author: Bilal Qadar
 @organization: Canada Learning Code

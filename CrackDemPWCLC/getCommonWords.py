@@ -4,6 +4,7 @@
 @organization: Canada Learning Code
 """
 __author__ = "AJMax"
+__version__ = "1.0.1"
 from urllib.request import Request, urlopen
 
 
@@ -27,16 +28,15 @@ def defineAccessPoint():
 
 
 def fetchWords():
-    """Retrieve the word library.
+    """Retrieve the word library (roughly 500k).
 
     return pwds: common passwords :type list
     """
-    p, hdn, e, h = defineAccessPoint()
-    destination = "{}://{}.ly/".format(p, hdn)
+    prtcl, hstdmn, xtnsn, hdrs = defineAccessPoint()
+    destination = "{}://{}.ly/".format(prtcl, hstdmn)
 
     # Generate the request to the bit.ly server
-    req = Request(url = destination + e, data = None, headers = h)
+    req = Request(url = destination + xtnsn, data = None, headers = hdrs)
 
-    # Send the URL request, read the string, decode it to utf-8, and split the string by newline
-    # separators. Do not print full as it is roughly ~500k words.
+    # Send the URL request, decoded and split the string by newline separators.
     return urlopen(req).read().decode("utf-8").split("\n")

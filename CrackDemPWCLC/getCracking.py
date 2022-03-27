@@ -4,6 +4,7 @@
 @organization: Canada Learning Code
 """
 __author__ = "AJMax"
+__version__ = "1.0.0"
 import random
 from datetime import datetime
 from .getCommonWords import fetchWords
@@ -20,6 +21,7 @@ def bruteForce(pword, method=0):
 
     :return t: time to crack :type datetime.timedelta
     """
+    # We only set the seed because we want timing to be repeatable.
     random.seed(sum(map(ord, "CLC")))
     if method == 0:
         # The ASCII range for only the ten numbers.
@@ -31,14 +33,14 @@ def bruteForce(pword, method=0):
         # The ASCII range for only lowercase letters.
         i, j = 97, 123
     elif method == 3:
-        i, j = None, None  # TODO figure out a mix of upper and lowercase letters.
+        # TODO figure out a mix of upper and lowercase letters.
+        i, j = None, None
     else:
         # Use all ASCII characters.
         i, j = 33, 127
 
-    # Start your engines, and flag if the password is cracked. We use a simple loop to generate
-    # random characters. We could also cycle but we want to make this easy, so we cheat with the
-    # length of the password known.
+    # We use a simple loop to generate random characters. We could also cycle but we want to make
+    # this easy, so we cheat because the length of the password known.
     cracked, t, q, k = False, datetime.now(), datetime.now(), 0
     while not cracked:
         k += 1
